@@ -2,6 +2,8 @@
 require "app_hotkeys"
 require "prev_application"
 require "window_management"
+require "window_management_legacy"
+require "paste_by_typing"
 
 hs.window.animationDuration = 0
 
