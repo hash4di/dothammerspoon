@@ -3,6 +3,7 @@ require "app_hotkeys"
 require "prev_application"
 require "window_management"
 require "paste_by_typing"
+require "url_handler"
 
 hs.window.animationDuration = 0
 

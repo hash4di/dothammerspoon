@@ -1,0 +1,3 @@
+[submodule "url_handler"]
+	path = url_handler
+	url = git@gitlab.com:pr0d1r2/url_handler_configuration.git
