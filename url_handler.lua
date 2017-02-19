@@ -9,6 +9,61 @@ local function tableElementMatches(table, value)
   return false
 end
 
+local TRACKING_PARAMS = {
+  'utm_medium',
+  'utm_source',
+  'utm_campaign',
+  'utm_term'
+}
+
+local function isTrackingParam(paramName)
+ for i=1,#TRACKING_PARAMS do
+   if TRACKING_PARAMS[i] == paramName then
+     return true
+   end
+ end
+ return false
+end
+
+local function split(s, delimiter)
+  result = {}
+  for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+
+-- Converts links like:
+-- https://www.example.com/something?utm_medium=email&utm_source=newsletter&utm_campaign=example&utm_term=EN
+-- To:
+-- https://www.example.com/something?
+local function stripTrackingFromUrl(fullURL)
+  local baseUrl = split(fullURL, '?')[1]
+  local params = split(fullURL, '?')[2]
+  local paramsList = split(params, '&')
+
+  local okParams = {}
+  for i=1,#paramsList do
+    paramName = split(paramsList[i], '=')[1]
+    if not isTrackingParam(paramName) then
+      table.insert(okParams, paramsList[i])
+    end
+  end
+
+  local retVal = table.concat(
+    {
+      baseUrl,
+      table.concat(
+        okParams,
+        '&'
+      )
+    },
+    '?'
+  )
+
+  return retVal
+end
+
 -- Run known URLs in Chrome or Safari
 -- Then allow to blacklist
 -- Anything else runs in TorBrowser
@@ -23,7 +78,7 @@ hs.urlevent.httpCallback = function(scheme, host, params, fullURL)
     bundleID = 'org.mozilla.tor browser'
   end
   if bundleID then
-    hs.urlevent.openURLWithBundle(fullURL, bundleID)
+    hs.urlevent.openURLWithBundle(stripTrackingFromUrl(fullURL), bundleID)
   end
 end
 
