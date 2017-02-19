@@ -38,6 +38,9 @@ end
 -- To:
 -- https://www.example.com/something?
 local function stripTrackingFromUrl(fullURL)
+  if not fullURL:find('?') then
+    return fullURL
+  end
   local baseUrl = split(fullURL, '?')[1]
   local params = split(fullURL, '?')[2]
   local paramsList = split(params, '&')
