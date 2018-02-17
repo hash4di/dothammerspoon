@@ -77,8 +77,10 @@ hs.urlevent.httpCallback = function(scheme, host, params, fullURL)
     bundleID = 'com.apple.Safari'
   elseif tableElementMatches(BLACKLIST_URL_REGEXPS, fullURL) then
     hs.alert.show("URL " .. fullURL .. " is blacklisted. If you want to use it remove matching regexp from BLACKLIST_URL_REGEXPS")
-  else
+  elseif tableElementMatches(TOR_BROWSER_URL_REGEXPS, fullURL) then
     bundleID = 'org.mozilla.tor browser'
+  else
+    bundleID = 'com.google.Chrome'
   end
   if bundleID then
     hs.urlevent.openURLWithBundle(stripTrackingFromUrl(fullURL), bundleID)
