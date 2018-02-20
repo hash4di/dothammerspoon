@@ -54,3 +54,14 @@ bindResizeAndPlaceWindow("/", "66", 0, 3, 1, 1, 1)
 
 bindResizeAndPlaceWindow("t", 0, 0, 4, 1, 3, 1)
 bindResizeAndPlaceWindow("y", "25", 0, 4, 1, 3, 1)
+
+local function bindResizeAndPlaceWindowSmaller(hkey, x, y, wDiv, hDiv, wMul, hMul)
+  hs.hotkey.bind(SCREEN_MODIFIER, hkey, function()
+    resizeAndPlaceWindow(x, y, wDiv, hDiv, wMul, hMul)
+  end)
+end
+
+bindResizeAndPlaceWindowSmaller("[", 0, 0, 4, 4, 1, 1)
+bindResizeAndPlaceWindowSmaller("]", "75", 0, 4, 4, 1, 1)
+bindResizeAndPlaceWindowSmaller("'", 0, "75", 4, 4, 1, 1)
+bindResizeAndPlaceWindowSmaller("\\", "75", "75", 4, 4, 1, 1)
