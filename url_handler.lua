@@ -80,7 +80,7 @@ hs.urlevent.httpCallback = function(scheme, host, params, fullURL)
   elseif tableElementMatches(TOR_BROWSER_URL_REGEXPS, fullURL) then
     bundleID = 'org.mozilla.tor browser'
   else
-    bundleID = 'com.google.Chrome'
+    bundleID = 'com.apple.Safari'
   end
   if bundleID then
     hs.urlevent.openURLWithBundle(stripTrackingFromUrl(fullURL), bundleID)
