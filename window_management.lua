@@ -43,11 +43,16 @@ bindResizeAndPlaceWindow("Right", "50", 0, 2, 1, 1, 1)
 bindResizeAndPlaceWindow("Up", 0, 0, 1, 2, 1, 1)
 bindResizeAndPlaceWindow("Down", 0, "50", 1, 2, 1, 1)
 
+-- 4x4 keyboard matrix mapped to cells on the screen:
+-- [ ]
+-- ' \
 bindResizeAndPlaceWindow("[", 0, 0, 2, 2, 1, 1)
 bindResizeAndPlaceWindow("]", "50", 0, 2, 2, 1, 1)
 bindResizeAndPlaceWindow("'", 0, "50", 2, 2, 1, 1)
 bindResizeAndPlaceWindow("\\", "50", "50", 2, 2, 1, 1)
 
+-- 3x1 keyboard matrix mapped to cells on the screen:
+-- v b n
 bindResizeAndPlaceWindow("v", 0, 0, 3, 1, 1, 1)
 bindResizeAndPlaceWindow("b", "33", 0, 3, 1, 1, 1)
 bindResizeAndPlaceWindow("n", "66", 0, 3, 1, 1, 1)
@@ -61,6 +66,9 @@ local function bindResizeAndPlaceWindowSmaller(hkey, x, y, wDiv, hDiv, wMul, hMu
   end)
 end
 
+-- 4x4 keyboard matrix mapped to cells on the screen in far corners - shift modified to quickly look window underneath:
+-- [ ]
+-- ' \
 bindResizeAndPlaceWindowSmaller("[", 0, 0, 4, 4, 1, 1)
 bindResizeAndPlaceWindowSmaller("]", "75", 0, 4, 4, 1, 1)
 bindResizeAndPlaceWindowSmaller("'", 0, "75", 4, 4, 1, 1)
