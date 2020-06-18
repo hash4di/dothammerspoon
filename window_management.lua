@@ -98,3 +98,12 @@ bindResizeAndPlaceWindow("m", 0, "75", 4, 4, 1, 1)
 bindResizeAndPlaceWindow(",", "25", "75", 4, 4, 1, 1)
 bindResizeAndPlaceWindow(".", "50", "75", 4, 4, 1, 1)
 bindResizeAndPlaceWindow("/", "75", "75", 4, 4, 1, 1)
+
+-- centered quarter
+-- ----
+-- -OO-
+-- -OO-
+-- ----
+hs.hotkey.bind(SCREEN_MODIFIER, "Return", function()
+  resizeAndPlaceWindow("25", "25", 2, 2, 1, 1)
+end)
